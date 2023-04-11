@@ -8,6 +8,6 @@ Projects is then accessible on locahost port 80.
 
 Sample database and data are created by calling url: /product/create
 
-Created orders can be checked by calling url: /cart/orders
+Created orders can be checked by calling url: /order/list
 
 CS and PHPSTAN could be called by composer cs-check and composer phpstan inside container or with help of docker exec.

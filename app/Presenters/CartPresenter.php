@@ -9,7 +9,6 @@ use App\Model\Order;
 use App\Model\OrderFacade;
 use App\Model\ProductFacade;
 use Nette;
-use Nette\Application\Responses\JsonResponse;
 use Nette\Application\UI\Form;
 use Nette\Database\Row;
 use Nette\Utils\ArrayHash;
@@ -44,12 +43,6 @@ final class CartPresenter extends Nette\Application\UI\Presenter
 	public function actionList(): void
 	{
 		$this->renderList();
-	}
-
-
-	public function actionOrders(): JsonResponse
-	{
-		$this->sendJson($this->orderFacade->getOrders());
 	}
 
 
