@@ -1,0 +1,37 @@
+{layout './../@layout.latte'}
+{block content}
+    <div id="container-fluid">
+        <div class="col-lg-8 mx-auto p-4 py-md-5">
+            <h1>Cart</h1>
+            <div class="nav justify-content-end" n:snippetArea="nav" style="margin-bottom: 20px">
+                <button class="btn btn-danger btn-small" disabled="true" n:snippet="price" style="margin-right: 8px">Total: {$total} Kč</button>
+            </div>
+            {include './../Partials/_nav.latte'}
+            <table class="table table-striped" n:snippetArea="products" style="margin-top: 10px">
+                {foreach $products as $product}
+                    <tr n:snippet="$product->id">
+                        <td>{$product->id}</td>
+                        <td>{$product->name}</td>
+                        <td>{$product->price} Kč</td>
+                        <td>{$product->emuPrice} Eur</td>
+                        <td>{$product->count} ks</td>
+                    </tr>
+                {/foreach}
+            </table>
+            <form n:name=orderForm class=form>
+                <div>
+                    <label n:name=email class="form-label">Email: <input n:name=email size=20 autofocus class="form-control"></label>
+                </div>
+                <div>
+                    <label n:name=name class="form-label">Name: <input n:name=name class="form-control"></label>
+                </div>
+                <div>
+                    <label n:name=phone class="form-label">Phone: <input n:name=phone class="form-control"></label>
+                </div>
+                <div>
+                    <input n:name=send class="btn btn-success">
+                </div>
+            </form>
+        </div>
+    </div>
+{/block}

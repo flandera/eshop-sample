@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  eshop:
+    container_name: eshop
+    image: webdevops/php-apache-dev:8.1
+    working_dir: /var/www/eshop
+    environment:
+      PHP_DATE_TIMEZONE: 'Europe/Prague'
+      WEB_DOCUMENT_ROOT: /var/www/eshop/www/
+      DOCUMENT_ROOT: /var/www/eshop/www/
+      WEB_DOCUMENT_INDEX: /var/www/eshop/www/index.php
+      PHP_IDE_CONFIG: serverName=eshop
+      PHP_DEBUGGER: xdebug
+      XDEBUG_REMOTE_AUTOSTART: 1
+      XDEBUG_REMOTE_ENABLE: 1
+      XDEBUG_REMOTE_CONNECT_BACK: 0
+      XDEBUG_REMOTE_HOST: 192.168.1.129
+      XDEBUG_REMOTE_PORT: 9003
+      XDEBUG_IDEKEY: PHPSTORM
+      XDEBUG_MODE: debug
+      XDEBUG_START_WITH_REQUEST: 'yes'
+      XDEBUG_CLIENT_HOST: host.docker.internal
+      PM_MAX_REQUESTS: 500
+      PHP_MEMORY_LIMIT: 2G
+    shm_size: 2g
+    volumes:
+      - ./:/var/www/eshop:rw
+    ports:
+      - "80:80"

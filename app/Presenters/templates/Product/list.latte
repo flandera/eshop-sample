@@ -1,0 +1,30 @@
+{layout './../@layout.latte'}
+{block content}
+    <div id="container-fluid">
+        <div class="col-lg-8 mx-auto p-4 py-md-5">
+            <h1>Products</h1>
+            <div class="nav justify-content-end" n:snippetArea="nav" style="margin-bottom: 20px">
+                <button class="btn btn-sucess btn-small" disabled="true" n:snippet="count" style="margin-right: 20px">Items: {$count}</button>
+                <button class="btn btn-danger btn-small" disabled="true" n:snippet="price" style="margin-right: 8px">Price: {$price} Kč</button>
+            </div>
+            {include './../Partials/_nav.latte'}
+
+            <table class="table table-striped" n:snippetArea="products" style="margin-top: 10px">
+                {foreach $products as $product}
+                    <tr n:snippet="$product->id">
+                        <td><a n:href="Product:show $product->id">{$product->id}</a></td>
+                        <td>{$product->name}</td>
+                        <td>{$product->price} Kč</td>
+                        <td>{$product->emuPrice} Eur</td>
+                        <td>
+                            {foreach $product->labels as $label}
+                                <span class="badge badge-pill badge-success" style="background-color: green">{$label->name} </span>
+                            {/foreach}
+                        </td>
+                        <td style="text-align: right"><a class="btn btn-small btn-primary ajax" n:href="update! $product->id">Koupit</a></td>
+                    </tr>
+                {/foreach}
+            </table>
+        </div>
+    </div>
+{/block}
