@@ -4,6 +4,8 @@ Sample eshop
 
 2. Run me with docker compose up in the project root.
 
+3. RUn composer install inside of container or via docker exec
+
 Projects is then accessible on locahost port 80.
 
 Sample database and data are created by calling url: /product/create

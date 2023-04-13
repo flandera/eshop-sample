@@ -21,9 +21,9 @@ class ExchangeRateFacade
 		private Session $session,
 	) {
 		$this->day = (new \DateTime())->format('Y-m-d');
-        /** @codingStandardsIgnoreStart */
+		/** @codingStandardsIgnoreStart */
 		$this->fileName = $this->appDir . '/../temp/files/' . $this->day . '-' . 'courses.txt';
-        /** @codingStandardsIgnoreEnd */
+		/** @codingStandardsIgnoreEnd */
 	}
 
 
